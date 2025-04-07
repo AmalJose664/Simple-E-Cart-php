@@ -1,0 +1,135 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #fffdfd;
+	color: #333;
+}
+
+.container {
+	max-width: 1100px;
+	margin: 20px auto;
+	margin-top: 90px;
+	padding: 20px;
+}
+
+.page-title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.description-box{
+	background: var(--low-theme);
+	border-radius: 9px;
+	display: inline;
+	padding: 8px;
+	cursor: pointer;
+}
+
+.product-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.product-item {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+	margin-bottom: 15px;
+	transition: all .45s ease;
+}
+
+.product-item:hover {
+	border-color: var(--high-theme);
+	transform: scale(1.01);
+}
+
+.product-image {
+	width: 80px;
+	height: auto;
+	border-radius: 8px;
+	object-fit: cover;
+	background-color: #ddd;
+}
+
+.product-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.product-info span {
+	font-size: 14px;
+	
+}
+
+.product-name {
+	font-weight: bold;
+	font-size: 18px;
+	color: #222;
+}
+
+.item-price {
+	font-size: 16px;
+	color: #e63946;
+}
+
+.discount-price {
+	font-size: 14px;
+	color: #2a9d8f;
+}
+
+.btn-group {
+	display: flex;
+	gap: 10px;
+}
+
+.btn-item {
+	padding: 8px 15px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all .45s ease;
+	font-size: 14px;
+}
+.btn-item:hover{
+	transform: scale(1.1);
+}
+.btn-item:active {
+	transform: scale(.09);
+}
+.btn-item-edit {
+	background: linear-gradient(to right, var(--high-theme), var(--highest)) !important;
+	
+	color: #fff;
+}
+
+.btn-item-delete {
+	background: linear-gradient(to left, var(--high-theme), var(--highest)) !important;
+	color: #fff;
+}
+.add-btn{
+	float: inline-end;
+	margin: 20px;
+	outline: none;
+	border: 1px transparent;
+	background-color: var(--low-theme);
+	padding: 8px;
+	margin: 9px;
+	border-radius: 9px;
+	transition: .45s ease all;
+}
+.add-btn:hover{
+	transform: scale(1.1);
+}
+.add-btn:active{
+	transform: scale(.9);
+}
+.btn-box{
+	padding: 10px;
+}

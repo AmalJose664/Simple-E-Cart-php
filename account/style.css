@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+::selection {
+    background-color: var(--high-accent);
+}
+
+body {
+    overflow: hidden;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.first {
+    float: left;
+    width: 65%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+    padding: 2px 20px 20px;
+
+}
+
+#accessbtn {
+    display: block;
+    margin-top: 30px;
+    width: 300px;
+    height: 40px;
+    border-radius: 24px;
+    border: none;
+    padding: 13px;
+    background-color: var(--high-accent);
+	
+    width: 390px;
+    transition: .3s ease-in all;
+    color: black;
+    font-size: 16px;
+}
+
+#accessbtn:hover {
+    background-color: var(--high-theme);
+    transition: .3s ease-in;
+    cursor: pointer;
+
+}#accessbtn:active{
+    background-color: var(--dark);
+    
+}
+
+.fun {
+    padding: 20px 2px 0;
+    color: rgb(100, 105, 108);
+}
+
+.links {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    div {
+        cursor: pointer;
+        margin: 20px 20px;
+        border-radius: 30px;
+
+        svg {
+            width: 60px;
+            height: 60px;
+
+        }
+
+    }
+}
+
+.content {
+    padding: 30px;
+    border: 2px solid white;
+    min-height: 560px;
+    border-radius: 8px;
+    text-align: center;
+    transition: linear 600ms;
+
+    h1 {
+        font-size: 42px;
+    }
+}
+
+.content:hover {
+    border-color: var(--high-accent);
+    transition: linear 600ms;
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.072), -10px -10px 10px var(--accent-color);
+
+}
+
+.lines {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    div {
+        width: 60%;
+        height: 2px;
+        margin: auto 0px;
+        background-color: var(--high-theme);
+        border-radius: 24px;
+
+    }
+}
+
+.input-box {
+    position: relative;
+    z-index: 80;
+    width: 100%;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 24px;
+    outline: none;
+    font-size: 16px;
+    color: var(--v-dark);
+    font-weight: 600;
+    border-bottom: 2px solid #fff;
+    padding-right: 23px;
+    transition: .5s;
+}
+
+.input-box label {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--v-dark);
+    transition: .5s;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom: 2px solid var(--v-dark);
+    padding-left: 40px;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -9px;
+    left: 10px;
+    color: #414141;
+}
+
+.input-box input:invalid:not(:placeholder-shown) {
+    background-color: #fde0dd;
+    padding-left: 30px;
+
+}
+
+.input-box input:invalid:not(:placeholder-shown)~label {
+    top: -9px;
+    left: 10px;
+
+}
+
+.second {
+    /* background: linear-gradient(to right, #5da1a2, #81ffe0); */
+    background: url(DALL·E\ 2025-01-01\ 23.04.31\ -\ A\ creative\ illustration\ showing\ a\ laptop\ with\ a\ small\ shopping\ cart\ placed\ on\ the\ keyboard\ section.\ The\ image\ is\ designed\ with\ a\ side-angle\ perspectiv.webp);
+	
+	background-size: 1294px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: -496px;
+  background-position-y: 0px;
+    float: right;
+    width: 35%;
+    height: 100%;
+    background-color: rgb(47, 47, 47);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(43, 43, 43);
+    padding: 50px;
+    text-align: center;
+
+    h1,
+    h3 {
+        margin: 20px 0;
+		color: black;
+    }
+
+    a {
+        margin: 20px 0;
+        text-decoration: none;
+        width: 200px;
+        background-color: white;
+        color: black;
+        padding: 15px;
+        border-radius: 24px;
+        border: none;
+        transition: 300ms ease-in;
+
+    }
+
+    a:hover {
+        background-color: var(--theme-color);
+        transition: 300ms ease-in;
+    }
+}
+
+.mouse {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    background-color: var(--low-theme);
+    border-radius: 24px;
+    transition: 150ms ease;
+}
+#result{
+    margin: 20px -10px 0;
+    color: red;
+    transition: ease;
+}
+#result.anime{
+    animation: invaliid 1s;
+}
+@keyframes invaliid {
+    0% {
+            transform: translateX(-4%);
+        }
+    
+        15% {
+            transform: translateX(8%);
+        }
+    
+        30% {
+            transform: translateX(-8%);
+        }
+        45% {
+            transform: translateX(8%);
+        }
+        60% {
+            transform: translateX(-8%);
+        }
+    
+        75% {
+            transform: translateX(8%);
+        }
+        90% {
+            transform: translateX(-8%);
+        }
+        100% {
+            transform: translateX(4%);
+        }
+}
+
+@media(max-width:500px) {
+    .second {
+        display: none;
+    }
+
+    .first {
+        float: none;
+    }
+}

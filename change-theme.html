@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Theme Change</title>
+	<link rel="stylesheet" href="./utils/colors.css">
+	<style>
+		
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style: none;
+
+	a {
+		text-decoration: none;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	margin: 10px;
+	margin-top: 90px;
+}
+input{
+	cursor: pointer;
+}
+button {
+  background-color: rgb(99, 146, 254);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 9px;
+  transition: .45s ease;
+  &:hover{
+	background-color: rgb(78, 116, 205);
+  }
+  &:active{
+	transform: scale(.9);
+  }
+}
+.essentials,.box{
+	border-radius: 9px;
+	padding: 10px;
+	margin: 4px;
+
+}
+.box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	transition: .45s ease;
+
+	&:hover{
+		border-color: black;
+	}
+}
+.essentials{
+	width: 90px;
+	height: 90px;
+}
+.accent-color{
+	.color{
+		background-color: var(--accent-color);
+	}
+	.new-color{
+		background-color: var(--accent-color);
+	}
+}
+.low-accent{
+	.color{
+		background-color: var(--low-accent);
+	}
+	.new-color{
+		background-color: var(--low-accent);
+	}
+}
+.high-accent{
+	.color{
+		background-color: var(--high-accent);
+	}
+	.new-color{
+		background-color: var(--high-accent);
+	}
+}
+
+.theme-color{
+	.color{
+		background-color: var(--theme-color);
+	}
+	.new-color{
+		background-color: var(--theme-color);
+	}
+}
+.high-theme{
+	.color{
+		background-color: var(--high-theme);
+	}
+	.new-color{
+		background-color: var(--high-theme);
+	}
+}
+.low-theme{
+	.color{
+		background-color: var(--low-theme);
+	}
+	.new-color{
+		background-color: var(--low-theme);
+	}
+}
+
+
+.highest{
+	.color{
+		background-color: var(--highest);
+	}
+	.new-color{
+		background-color: var(--highest);
+	}
+}
+.dark{
+	.color{
+		background-color: var(--dark);
+	}
+	.new-color{
+		background-color: var(--dark);
+	}
+}
+
+.v-dark{
+	.color{
+		background-color: var(--v-dark);
+	}
+	.new-color{
+		background-color: var(--v-dark);
+	}
+}
+
+
+.point-color{
+	.color{
+		background-color: var(--point-color);
+	}
+	.new-color{
+		background-color: var(--point-color);
+	}
+}
+
+	</style>
+</head>
+
+<body>
+	<button style="margin-left: 10px; margin-top: 20px; " onclick="location.href='home.php#feature'">Go Back</button>
+<button onclick="getAllColors()" style="margin: 100px 0 0 300px;" id="apply-colors">
+	Apply Selected Colors
+</button>
+<button onclick="localStorage.clear();location.reload()" style="margin: 100px 0 0 300px;" id="apply-colors">
+	Clear color settings
+</button>
+<h3 style="margin-left: 300px; margin-top: 20px;">Change Your E cart color and Themes</h3>
+	<div class="container">
+		
+		<div class="content">
+			Accent color
+			<div class="accent-color box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+			
+					</div>
+				</div>
+				<input type="color" onchange="color(event)" >
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+			
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			High Accent color
+			<div class="high-accent box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Low Accent color
+			<div class="low-accent box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Theme color
+			<div class="theme-color box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			High Theme color
+			<div class="high-theme box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Low Theme color
+			<div class="low-theme box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Highest color
+			<div class="highest box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Dark color
+			<div class="dark box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			V-Dark color
+			<div class="v-dark box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			Point color
+			<div class="point-color box">
+				<div class="old">
+					<h4> Old Color</h4>
+					<div class="color essentials">
+		
+					</div>
+				</div>
+				<input type="color" onchange="color(event)">
+				<div class="new">
+					<h4>New Color</h4>
+					<div class="new-color essentials">
+		
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	
+	<script >
+		const root = document.documentElement;
+		newColors = document.querySelectorAll('.new-color')
+		inputs = document.querySelectorAll('input')
+		
+		
+		let newColorSelected = {
+			
+		};
+		function rgbToHex(rgb) {
+				const [r, g, b] = rgb.match(/\d+/g).map(Number);
+				return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+		}
+
+		function addToLocalStorage(object) {
+				localStorage.setItem('colors', JSON.stringify(newColorSelected))
+				//location.reload()
+				
+		}
+
+		function getAllColors(){
+			newColors.forEach(element => {
+				let color = window.getComputedStyle(element).getPropertyValue('background-color')
+				//console.log(color);
+				//console.log(rgbToHex(color));
+				//newColorSelected.push(rgbToHex(color))
+				let elementClass = element.parentElement.parentElement.classList[0]
+				newColorSelected[elementClass] = {};
+				newColorSelected[elementClass]['color'] = rgbToHex(color)
+				newColorSelected[elementClass]['location'] = elementClass
+				
+			});
+			//console.log("New colors object =====>>", newColorSelected);
+			
+			addToLocalStorage();
+			
+
+		}
+		document.addEventListener("DOMContentLoaded", function () {
+				console.log("DOM fully loaded and parsed!");
+				changeTheme()
+				// Your function here
+		});
+
+	
+		
+		
+		function changeTheme() {
+			//console.log("loaded");
+
+			
+
+			
+			if (localStorage.getItem('colors') == null) {
+				const colorArray = ['#c6fff1', '#a0f8e2', '#e0fff7', '#5bf5eb', '#00eddd', '#85f0e9', '#00c5ed', '#51ceaf', '#309179', '#1dfff0'];
+				inputs.forEach((input, i) => {
+					console.log(i);
+
+					input.value = colorArray[i];
+				})
+				console.log("cancelled");
+				return
+
+			}
+			
+			let colorFromStorage = JSON.parse(localStorage.getItem('colors'))
+			//console.log("Storage colors",colorFromStorage);
+			
+			Object.entries(colorFromStorage).forEach((key,i) => {
+				//console.log(key[1].color);
+				let color = key[1].color
+				let property = key[1].location
+				//root.style.setProperty();
+				inputs[i].value = color
+				//console.log(color,property,"Iteration ");
+				//console.log(color);
+				
+				root.style.setProperty(`--${property}`, `${color}`);
+			})
+			
+				// Get the root element	
+				// Update CSS variables
+				
+		
+		}
+		
+		
+
+		function color (e){
+			//console.log(e.target.nextSibling.nextElementSibling.childNodes[3]);
+			e.target.nextSibling.nextElementSibling.childNodes[3].style.backgroundColor = e.target.value;
+
+			
+		}
+
+	</script>
+</body>
+
+</html>

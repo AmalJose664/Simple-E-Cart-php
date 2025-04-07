@@ -1,0 +1,30 @@
+:root {
+	--bg-color: #ffff;
+	--text-color: #0f172a;
+	--main-color: #6b7280;
+	--other-color: #334155;
+	--big-font: 4.3rem;
+	--p-font: 1rem;
+	--h2-font: 2.2rem;
+
+
+
+	
+	--theme-color:#5bf5eb;
+	--accent-color:#c6fff1;
+
+	--low-theme:#85f0e9;
+	--high-theme:#00eddd;
+
+	--low-accent:#e0fff7;
+	--high-accent:#a0f8e2;
+
+	--highest:#00c5ed;
+
+	--dark:#51ceaf;
+
+	--v-dark:#309179;
+
+	--point-color: #1dfff0;
+
+}
