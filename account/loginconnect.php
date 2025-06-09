@@ -1,6 +1,6 @@
 
 <?php
-//the request is received from login.html or signup.html from accounts folder
+
 session_start();
 $debug_mode=false;
 include('../utils/connect.php');
@@ -8,35 +8,33 @@ include('../utils/connect.php');
 if(!$debug_mode){
     header('Content-Type: application/json');
 
-    // If this is for a POST request
+    
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //if the client side request was a post method only
-        //this is the first if ; this checks if the request method was post or get;
+       
+        
         $input = json_decode(file_get_contents('php://input'), true);
-        //the input is an array with users all details recieved from clent side
+        
         $name = $input['name'] ?? "";
         $email = $input['email'] ?? '';
         $pass = $input['pass'] ?? "";
         $role = 'user';
         $action = $input['action'];
-        //$_SESSION['user_name'] = $name;
+        
 
 
 
         if ($action === 'login') {
-			//the action variable specify what type of action ; like login or sign up
-			//this was submitted from login page then check if the user is in the database ; if yes then display home page for the user; if no display invalid user
+			
 			$sql = "SELECT * FROM users WHERE email = ? AND password = ?";
 			$stmt = $conn->prepare($sql);
 			$stmt->bind_param("ss", $email, $pass);
 			$stmt->execute();
 			$result = $stmt->get_result();
 
-            if (mysqli_num_rows($result) > 0) { //this checks if entered data are in the database or not
+            if (mysqli_num_rows($result) > 0) { 
                 session_regenerate_id(true);
                 while ($row = mysqli_fetch_assoc($result)) {
-					//the entered data of the  user was found in databse so take his details from db and store it in session to access it across multiply pages
 					$_SESSION['user_id'] = $row['uid'];
 					$_SESSION['user_name'] = $row['name'];
 					$_SESSION['user_email'] = $row['email'];
@@ -44,38 +42,32 @@ if(!$debug_mode){
 
                     break;
                 }
-                //sent success messege for login due to correct detils entered by him /her
                 $response = [
                     'message' => 'succes for a login',
                     'status' => true,
                     'next' => "../home.php",
                 ];
             } else {
-                //NO USER was found so display this to user
                 $response = [
                     'message' => 'Email or Passowrd Incorrect',
                     'status' => false,
                 ];
             }
         } elseif ($action === 'signup') {
-            //if the action was for signup
-            // this was submitted from sign up page ;so insert user to the database
             $sql = "select * from users where email = '$email'";
             $result = $conn->query($sql);
             if (mysqli_num_rows($result) == 0) {
-				//this if checks if the user entered email is already  taked by another user 
 				$sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
 				$stmt = $conn->prepare($sql);
 
-				// Bind parameters to the placeholders
 				$stmt->bind_param("ssss", $name, $email, $pass, $role);
 
-				// Execute the prepared statement
+				
 				if ($stmt->execute()) {
-                    //this if confirms that data has entered the databses or inserted succesfully
+                   
                     $sql = "select * from users where name='$name' and email='$email'";
                     $result = $conn->query($sql);
-                    //this while takes the inserted data from db and place it in session for multiple use
+                    
                     while ($row = mysqli_fetch_assoc($result)) {
                         session_regenerate_id(true);
                         $_SESSION['user_id'] = $row['uid'];
@@ -84,21 +76,21 @@ if(!$debug_mode){
                         $_SESSION['user_role'] = $row['role'];
                         break;
                     }
-                    //display sign up success for user
+                   
                     $response = [
                         'message' => "Signup up success ",
                         'status' => true,
                         'next' => '../home.php'
                     ];
                 } else {
-                    //this will be a mysql error on data insertion
+                   
                     $response = [
                         'message' => 'Server mysql error',
                         'status' => false,
                     ];
                 }
             } else {
-                //this else is for when the entered email by the user is already taken by another user
+                
                 $response = [
                     'message' => 'Email Already taken',
                     'status' => false,
